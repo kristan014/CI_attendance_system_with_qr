@@ -13,4 +13,33 @@ class SystemSetup extends CI_Controller {
 		$this->load->model('UserModel');
 	}
 
+
+    public function employee_page()
+	{
+
+	}
+
+    public function get_one_employee()
+	{
+
+	}
+
+
+    public function get_all_employee()
+	{
+
+	}
+
+
+    public function update_employee()
+	{
+
+	}
+
+
+    
+    public function delete_employee()
+	{
+
+	}
 }
