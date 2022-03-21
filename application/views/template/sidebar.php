@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('SystemSetup/dashboard')?>">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
@@ -14,7 +14,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item <?= $this->uri->segment(2) == 'dashboard' ? 'active' : '' ?>">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="<?= base_url('SystemSetup/dashboard')?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -23,43 +23,64 @@
     <hr class="sidebar-divider">
 
     <!-- Heading -->
-    <div class="sidebar-heading">
-        Interface
-    </div>
+    <!-- <div class="sidebar-heading">
+        User Management
+    </div> -->
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Components</span>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser" aria-expanded="true" aria-controls="collapseUser">
+            <i class="fas fa-fw fa-user-cog"></i>
+            <span>User Management</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseUser" class="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Components:</h6>
-                <a class="collapse-item" href="buttons.html">Buttons</a>
-                <a class="collapse-item" href="cards.html">Cards</a>
+                <h6 class="collapse-header">User Management:</h6>
+                <a class="collapse-item" href="#">User Type</a>
+                <a class="collapse-item" href="#">User</a>
             </div>
         </div>
     </li>
 
     <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-wrench"></i>
-            <span>Utilities</span>
+    <li class="nav-item <?= in_array($this->uri->segment(1), array(
+                                                    'department', 'job_title', 'employee','shift',
+                                                )) ? 'active' : '' ?>">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEmployee" aria-expanded="true" aria-controls="collapseEmployee">
+            <i class="fas fa-fw fa-user-check"></i>
+            <span>Employee Management</span>
         </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+        <div id="collapseEmployee" class="collapse <?= in_array($this->uri->segment(1), array(
+                                                    'department', 'job_title', 'employee','shift',
+                                                )) ? 'show' : '' ?>" aria-labelledby="headingEmployee" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Utilities:</h6>
-                <a class="collapse-item" href="utilities-color.html">Colors</a>
-                <a class="collapse-item" href="utilities-border.html">Borders</a>
-                <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                <a class="collapse-item" href="utilities-other.html">Other</a>
+                <h6 class="collapse-header">Employee Management:</h6>
+                <a class="collapse-item <?= $this->uri->segment(1) == 'department' ? 'active' : '' ?>" href="<?= base_url('department')?>">Department</a>
+
+                <a class="collapse-item <?= $this->uri->segment(1) == 'job_title' ? 'active' : '' ?>" href="#">Job Title</a>
+                <a class="collapse-item <?= $this->uri->segment(1) == 'employee' ? 'active' : '' ?>" href="#">Employee</a>
+                <a class="collapse-item <?= $this->uri->segment(1) == 'shift' ? 'active' : '' ?>" href="#">Shift</a>
             </div>
         </div>
     </li>
 
- 
+    
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePayroll" aria-expanded="true" aria-controls="collapsePayroll">
+            <i class="fas fa-fw fa-cash-register"></i>
+            <span>Payroll Management</span>
+        </a>
+        <div id="collapsePayroll" class="collapse" aria-labelledby="headingPayroll" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Payroll Management:</h6>
+                <a class="collapse-item" href="#">Tax</a>
+                <a class="collapse-item" href="#">Deduction</a>
+                <a class="collapse-item" href="#">Allowance</a>
+                <a class="collapse-item" href="#">Salary</a>
+
+            </div>
+        </div>
+    </li>
 
 
     <!-- Divider -->
@@ -97,7 +118,7 @@
                 <!-- Nav Item - User Information -->
                 <li class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$this->session->userdata('FIRSTNAME')." ".$this->session->userdata('LASTNAME')?></span>
                         <img class="img-profile rounded-circle" src="<?= base_url('assets') ?>/img/undraw_profile.svg">
                     </a>
                     <!-- Dropdown - User Information -->

@@ -39,7 +39,7 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Payroll Management System</h1>
                                     </div>
-                                    <form class="user" action="<?= base_url('LoginController/form_validation') ?>" method="POST">
+                                    <form class="user" action="<?= base_url('form_validation') ?>" method="POST">
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter Email Address...">
                                             <span class="text-danger"><?php echo form_error('email'); ?></span>
