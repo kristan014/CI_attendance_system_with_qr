@@ -1,5 +1,5 @@
 const apiURL = "http://localhost:8000/api/v1/";
-const baseURL = "http://localhost/pms/";
+const baseURL = "http://localhost/payroll/";
 
 // type = error, warning, success, info
 // title = string

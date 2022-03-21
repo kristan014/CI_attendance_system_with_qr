@@ -4,7 +4,8 @@ class DepartmentModel extends CI_Model
 
     public function get_all_department()
     {
-        $query = $this->db->query('SELECT * FROM department');
+        $query = $this->db->get('department');  
+
         return $query->result();
     }
 

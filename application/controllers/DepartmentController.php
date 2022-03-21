@@ -11,7 +11,7 @@ class DepartmentController extends CI_Controller {
 
 		$this->load->database();
 
-		$this->load->model('UserModel');
+		$this->load->model('DepartmentModel');
 	}
 
 
@@ -27,10 +27,11 @@ class DepartmentController extends CI_Controller {
 	{
 
 	}
-
-
+	
+	
     public function get_all_department()
 	{
+		echo json_encode($this->DepartmentModel->get_all_department());
 
 	}
 
