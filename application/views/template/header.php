@@ -18,6 +18,13 @@
     <!-- Custom styles for this template-->
     <link href="<?= base_url('assets') ?>/css/sb-admin-2.min.css" rel="stylesheet">
     <link href="<?= base_url('assets') ?>/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+    <!-- toastr -->
+    <link href="<?= base_url('assets') ?>/vendor/toastr/build/toastr.min.css" rel="stylesheet">
+
+    <!-- swal -->
+    <link href="<?= base_url('assets') ?>/vendor/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet">
+
     <!-- Bootstrap core JavaScript-->
     <script src="<?= base_url('assets') ?>/vendor/jquery/jquery.min.js"></script>
     <script src="<?= base_url('assets') ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -25,6 +32,7 @@
 
     <!-- custom js -->
     <script src="<?= base_url('assets')?>/js/common.js"></script>
+
 
 </head>
 

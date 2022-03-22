@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('SystemSetup/dashboard')?>">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('SystemSetup/dashboard') ?>">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
@@ -14,7 +14,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item <?= $this->uri->segment(2) == 'dashboard' ? 'active' : '' ?>">
-        <a class="nav-link" href="<?= base_url('SystemSetup/dashboard')?>">
+        <a class="nav-link" href="<?= base_url('SystemSetup/dashboard') ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -44,18 +44,18 @@
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item <?= in_array($this->uri->segment(1), array(
-                                                    'department', 'job_title', 'employee','shift',
-                                                )) ? 'active' : '' ?>">
+                            'department', 'job_title', 'employee', 'shift',
+                        )) ? 'active' : '' ?>">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEmployee" aria-expanded="true" aria-controls="collapseEmployee">
             <i class="fas fa-fw fa-user-check"></i>
             <span>Employee Management</span>
         </a>
         <div id="collapseEmployee" class="collapse <?= in_array($this->uri->segment(1), array(
-                                                    'department', 'job_title', 'employee','shift',
-                                                )) ? 'show' : '' ?>" aria-labelledby="headingEmployee" data-parent="#accordionSidebar">
+                                                        'department', 'job_title', 'employee', 'shift',
+                                                    )) ? 'show' : '' ?>" aria-labelledby="headingEmployee" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Employee Management:</h6>
-                <a class="collapse-item <?= $this->uri->segment(1) == 'department' ? 'active' : '' ?>" href="<?= base_url('department')?>">Department</a>
+                <a class="collapse-item <?= $this->uri->segment(1) == 'department' ? 'active' : '' ?>" href="<?= base_url('department') ?>">Department</a>
 
                 <a class="collapse-item <?= $this->uri->segment(1) == 'job_title' ? 'active' : '' ?>" href="#">Job Title</a>
                 <a class="collapse-item <?= $this->uri->segment(1) == 'employee' ? 'active' : '' ?>" href="#">Employee</a>
@@ -64,7 +64,40 @@
         </div>
     </li>
 
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLeave" aria-expanded="true" aria-controls="collapsePayroll">
+            <i class="fas fa-fw fa-address-book"></i>
+            <span>Leave Management</span>
+        </a>
+        <div id="collapseLeave" class="collapse" aria-labelledby="headingLeave" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Leave Management:</h6>
+                <a class="collapse-item" href="#">Leave Type</a>
+                <a class="collapse-item" href="#">Leave</a>
     
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAttendance" aria-expanded="true" aria-controls="collapsePayroll">
+            <i class="fas fa-fw fa-clock"></i>
+            <span>Time and Attendance</span>
+        </a>
+        <div id="collapseAttendance" class="collapse" aria-labelledby="headingAttendance" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Time and Attendance:</h6>
+
+                <a class="collapse-item" href="#">Time in</a>
+                <a class="collapse-item" href="#">Time Out</a>
+                <a class="collapse-item" href="#">Attendance</a>
+
+
+            </div>
+        </div>
+    </li>
+
+
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePayroll" aria-expanded="true" aria-controls="collapsePayroll">
             <i class="fas fa-fw fa-cash-register"></i>
@@ -109,7 +142,7 @@
                 <i class="fa fa-bars"></i>
             </button>
 
-          
+
 
             <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">
@@ -118,7 +151,7 @@
                 <!-- Nav Item - User Information -->
                 <li class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$this->session->userdata('FIRSTNAME')." ".$this->session->userdata('LASTNAME')?></span>
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $this->session->userdata('FIRSTNAME') . " " . $this->session->userdata('LASTNAME') ?></span>
                         <img class="img-profile rounded-circle" src="<?= base_url('assets') ?>/img/undraw_profile.svg">
                     </a>
                     <!-- Dropdown - User Information -->
