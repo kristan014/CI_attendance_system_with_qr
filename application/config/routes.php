@@ -57,6 +57,17 @@ $route['form_validation'] = 'AccessController/form_validation';
 // DEPARTMENT
 $route['department'] = 'DepartmentController/department_page';
 
+// JOB TITLE
+$route['job_title'] = 'JobTitleController/job_title_page';
+
+// EMPLOYEE
+$route['employee'] = 'EmployeeController/employee_page';
+
+// SHIFT
+$route['shift'] = 'ShiftController/shift_page';
+
+
+
 
 
 $route['404_override'] = '';

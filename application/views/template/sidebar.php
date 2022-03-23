@@ -36,7 +36,6 @@
         <div id="collapseUser" class="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">User Management:</h6>
-                <a class="collapse-item" href="#">User Type</a>
                 <a class="collapse-item" href="#">User</a>
             </div>
         </div>
@@ -57,9 +56,9 @@
                 <h6 class="collapse-header">Employee Management:</h6>
                 <a class="collapse-item <?= $this->uri->segment(1) == 'department' ? 'active' : '' ?>" href="<?= base_url('department') ?>">Department</a>
 
-                <a class="collapse-item <?= $this->uri->segment(1) == 'job_title' ? 'active' : '' ?>" href="#">Job Title</a>
-                <a class="collapse-item <?= $this->uri->segment(1) == 'employee' ? 'active' : '' ?>" href="#">Employee</a>
-                <a class="collapse-item <?= $this->uri->segment(1) == 'shift' ? 'active' : '' ?>" href="#">Shift</a>
+                <a class="collapse-item <?= $this->uri->segment(1) == 'job_title' ? 'active' : '' ?>" href="<?= base_url('job_title') ?>">Job Title</a>
+                <a class="collapse-item <?= $this->uri->segment(1) == 'employee' ? 'active' : '' ?>" href="<?= base_url('employee') ?>">Employee</a>
+                <!-- <a class="collapse-item <?= $this->uri->segment(1) == 'shift' ? 'active' : '' ?>" href="<?= base_url('shift') ?>">Shift</a> -->
             </div>
         </div>
     </li>

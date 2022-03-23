@@ -20,7 +20,7 @@ class DepartmentController extends CI_Controller
 	{
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar');
-		$this->load->view('pages/department');
+		$this->load->view('pages/employee_management/department');
 		$this->load->view('template/footer');
 	}
 
@@ -86,6 +86,8 @@ class DepartmentController extends CI_Controller
 	{
 		$data = array(
 			'status' => 'Inactive',
+			'updated_at' => date('Y-m-d H:i:s'),
+
 		);
 		$this->DepartmentModel->delete_department($id,$data);
 	}

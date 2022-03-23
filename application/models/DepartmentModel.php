@@ -4,6 +4,7 @@ class DepartmentModel extends CI_Model
 
     public function get_all_department()
     {
+        $this->db->where('status', 'Active');
         $query = $this->db->get('department');
 
         return $query->result();
