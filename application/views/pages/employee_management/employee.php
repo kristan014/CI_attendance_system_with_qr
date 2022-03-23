@@ -6,7 +6,7 @@
          <div class="row">
              <div class="col-md-12">
 
-                 <form id="form_id" name="form_id">
+                 <form id="form_id" name="form_id" enctype="multipart/form-data">
                      <div class="card shadow mb-4">
                          <div class="card-header font-weight-bold text-primary">
                              Add Employee
@@ -14,22 +14,99 @@
                          <div class="card-body">
                              <input type="hidden" name="uuid" id="uuid" value="" />
                              <div class="row">
-                                 <div class="col-md-4 form-group">
-                                     <div class="mb-3"><label class="form-label">Employee Name<span class="text-danger">*</span></label>
-                                         <input type="text" class="form-control" id="Employee_name" name="Employee_name">
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <img src="https://avatars.dicebear.com/api/bottts/smile.svg" alt=""
+                                            class="rounded avatar-lg img-thumbnail" style="height:150px; width:150px;"
+                                            id="photo_path_placeholder" name="photo_path_placeholder">
+
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="photo" class="form-label">Profile Picture</label>
+                                        <input class="form-control" type="file" id="photo" name="photo"
+                                            accept="image/*">
+                                            
+                                    </div>
+                                </div>
+                            </div>
+
+                             <div class="row">
+                                 <div class="col-md-3 form-group">
+                                     <div class="mb-2"><label class="form-label">First Name<span class="text-danger">*</span></label>
+                                         <input type="text" class="form-control" id="first_name" name="first_name">
                                      </div>
                                  </div>
-                                 <div class="col-md-4 form-group">
-                                     <div class="mb-3"><label class="form-label">Employee Contact Number<span class="text-danger">*</span></label>
-                                         <input type="number" class="form-control" id="Employee_contact_no" name="Employee_contact_no">
+                                 <div class="col-md-3 form-group">
+                                     <div class="mb-2"><label class="form-label">Middle Name</label>
+                                         <input type="text" class="form-control" id="middle_name" name="middle_name">
                                      </div>
                                  </div>
-                                 <div class="col-md-4 form-group">
-                                     <div class="mb-3"><label class="form-label">Employee Head<span class="text-danger">*</span></label>
-                                         <input type="text" class="form-control" id="Employee_head" name="Employee_head">
+                                 <div class="col-md-3 form-group">
+                                     <div class="mb-2"><label class="form-label">Last Name<span class="text-danger">*</span></label>
+                                         <input type="text" class="form-control" id="last_name" name="last_name">
                                      </div>
                                  </div>
 
+                                 <div class="col-md-3 form-group">
+                                     <div class="mb-2"><label class="form-label">Extension Name</label>
+                                         <input type="text" class="form-control" id="extension_name" name="extension_name">
+                                     </div>
+                                 </div>
+                             </div>
+
+                             <div class="row">
+                                 <div class="col-md-3 form-group">
+                                     <div class="mb-2"><label class="form-label">Email<span class="text-danger">*</span></label>
+                                         <input type="text" class="form-control" id="email" name="email">
+                                     </div>
+                                 </div>
+                                 <div class="col-md-3 form-group">
+                                     <div class="mb-2"><label class="form-label">Cellphone Number<span class="text-danger">*</span></label>
+                                         <input type="number" class="form-control" id="cellphone_no" name="cellphone_no">
+                                     </div>
+                                 </div>
+                                 <div class="col-md-3 form-group">
+                                     <div class="mb-2"><label class="form-label">Nationality<span class="text-danger">*</span></label>
+                                         <input type="text" class="form-control" id="nationality" name="nationality">
+                                     </div>
+                                 </div>
+
+                                 <div class="col-md-3 form-group">
+                                     <div class="mb-2"><label class="form-label">Gender<span class="text-danger">*</span></label>
+                                         <select class="form-control" id="gender" name="gender">
+                                             <option value="Male">Male</option>
+                                             <option value="Female">Female</option>
+
+                                         </select>
+                                     </div>
+                                 </div>
+                             </div>
+
+                             <div class="row">
+                                 <div class="col-md-4 form-group">
+                                     <div class="mb-2"><label class="form-label">Birhtdate<span class="text-danger">*</span></label>
+                                         <input type="date" class="form-control" id="birth_date" name="birth_date">
+                                     </div>
+                                 </div>
+                                 <div class="col-md-4 form-group">
+                                     <div class="mb-2"><label class="form-label">Date Hired<span class="text-danger">*</span></label>
+                                         <input type="date" class="form-control" id="date_hired" name="date_hired">
+                                     </div>
+                                 </div>
+                                 <div class="col-md-4 form-group">
+                                     <div class="mb-2"><label class="form-label">Job Title<span class="text-danger">*</span></label>
+                                          <select class="form-control" id="job_title_id" name="job_title_id"></select>
+
+                                     </div>
+                                 </div>
+
+                            
+                             </div>
+                             <div class="row">
+                                 <div class="col-md-12">
+                                 <label class="form-label">Address<span class="text-danger">*</span></label>
+                                     <textarea name="address" id="address" class="form-control"></textarea>
+                                 </div>
                              </div>
 
 
@@ -69,10 +146,10 @@
                          <thead>
                              <tr>
                                  <th>Employee Name</th>
-                                 <th>Contact No</th>
-                                 <th>Employee Head</th>
+                                 <th>Job Title</th>
+                                 <th>Gender</th>
+                                 <th>Age</th>
                                  <th>Status</th>
-                                 <th>Created At</th>
                                  <th>Action</th>
 
                              </tr>
