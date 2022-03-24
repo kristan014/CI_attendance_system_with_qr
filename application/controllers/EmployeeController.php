@@ -47,14 +47,14 @@ class EmployeeController extends CI_Controller
 
 
 
-			$this->load->library('upload', $config);
-			if (!$this->upload->do_upload('photo')) {
-				echo $this->upload->display_errors();
-			} else {
-				$photo_info = $this->upload->data();
-				$photo_path = $photo_info['raw_name'] . $photo_info['file_ext'];
-			}
-		
+		$this->load->library('upload', $config);
+		if (!$this->upload->do_upload('photo')) {
+			echo $this->upload->display_errors();
+		} else {
+			$photo_info = $this->upload->data();
+			$photo_path = $photo_info['raw_name'] . $photo_info['file_ext'];
+		}
+
 		$first_name = $this->input->post('first_name');
 		$middle_name = $this->input->post('middle_name');
 		$last_name = $this->input->post('last_name');
@@ -89,11 +89,6 @@ class EmployeeController extends CI_Controller
 
 		$this->EmployeeModel->create_employee($data);
 
-	
-
-		// echo json_encode(array(
-		// 	"statusCode"=>200
-		// ));
 	}
 
 
@@ -167,5 +162,3 @@ class EmployeeController extends CI_Controller
 		$this->EmployeeModel->delete_employee($id, $data);
 	}
 }
-
-

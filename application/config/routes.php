@@ -67,6 +67,10 @@ $route['employee'] = 'EmployeeController/employee_page';
 $route['shift'] = 'ShiftController/shift_page';
 
 
+// USER
+$route['user'] = 'UserController/user_page';
+
+
 
 
 

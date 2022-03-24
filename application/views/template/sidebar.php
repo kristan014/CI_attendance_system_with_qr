@@ -28,15 +28,19 @@
     </div> -->
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
+    <li class="nav-item <?= in_array($this->uri->segment(1), array(
+                            'user',
+                        )) ? 'active' : '' ?>">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser" aria-expanded="true" aria-controls="collapseUser">
             <i class="fas fa-fw fa-user-cog"></i>
             <span>User Management</span>
         </a>
-        <div id="collapseUser" class="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
+        <div id="collapseUser" class="collapse <?= in_array($this->uri->segment(1), array(
+                                                        'user'
+                                                    )) ? 'show' : '' ?>" aria-labelledby="headingUser" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">User Management:</h6>
-                <a class="collapse-item" href="#">User</a>
+                <a class="collapse-item <?= $this->uri->segment(1) == 'user' ? 'active' : '' ?>" href="<?= base_url('user') ?>">User</a>
             </div>
         </div>
     </li>

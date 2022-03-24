@@ -1,19 +1,51 @@
 <?php
 class UserModel extends CI_Model{
  
+    // Get All
     public function get_all_user()
     {
-        $query = $this->db->query('SELECT * FROM user');
+        $query = $this->db->get('user');
+
         return $query->result();
     }
 
+    // Get One
     public function get_one_user($id)
     {
-        $this->db->where('id', $id);  
-        $query = $this->db->query('SELECT * FROM user');
+        $this->db->where('user_id', $id);
+        $query = $this->db->get('user');
+
         return $query->result();
     }
 
+    // Create
+    public function create_user($data)
+    {
+        if ($this->db->insert('user', $data)) {
+            return true;
+        } else {
+            echo $this->db->error();
+        }
+    }
+
+
+    // Update
+    public function update_user($id,$data)
+    {
+        $this->db->where('user_id', $id);
+        $this->db->update('user', $data);
+   
+    }
+
+    // Delete
+    public function delete_user($id,$data)
+    {
+        $this->db->where('user_id', $id);
+        $this->db->update('user', $data);
+
+    }
+
+    // Login
     function login($email, $password)  
     {  
         $this->db->where('email', $email);  

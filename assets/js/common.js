@@ -53,6 +53,8 @@ formReset = (action = "hide") => {
 	} else if (action == "show") {
 		// show
 		$("#div_form").show();
+		$("#uuid").val("");
+		
 		$("#btn_add").hide();
 		$(".submit").show();
 		$("#form_id input, select, textarea").prop("disabled", false);
