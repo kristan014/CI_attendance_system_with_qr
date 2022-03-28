@@ -63,11 +63,7 @@ $(function () {
 
 						success: function (data) {
 							console.log(data);
-							notification(
-								"success",
-								"Success!",
-								"User Successfuly Created"
-							);
+							notification("success", "Success!", "User Successfuly Created");
 							formReset("hide");
 
 							loadTable();
@@ -79,24 +75,17 @@ $(function () {
 				} else {
 					// update record
 					$.ajax({
-						url:
-							baseURL +
-							"UserController/update_user/" +
-							$("#uuid").val(),
+						url: baseURL + "UserController/update_user/" + $("#uuid").val(),
 						type: "POST",
 						data: {
-                            email: $("#email").val(),
+							email: $("#email").val(),
 							password: $("#password").val(),
 							employee_id: $("#employee_id").val(),
 						},
-	
+
 						cache: false,
 						success: function (data) {
-							notification(
-								"success",
-								"Success!",
-								"User Successfuly Updated"
-							);
+							notification("success", "Success!", "User Successfuly Updated");
 							formReset("hide");
 
 							loadTable();
@@ -109,7 +98,6 @@ $(function () {
 			},
 		});
 });
-
 
 // function to load departments
 loadEmployees = () => {
@@ -127,8 +115,10 @@ loadEmployees = () => {
 						"<option value='" +
 						dataOptions.employee_id +
 						"'>" +
-						dataOptions.first_name +" "+dataOptions.last_name
-						"</option>";
+						dataOptions.first_name +
+						" " +
+						dataOptions.last_name;
+					("</option>");
 
 					$("#employee_id").append(options);
 				});
@@ -141,7 +131,6 @@ loadEmployees = () => {
 };
 
 loadEmployees();
-
 
 loadTable = () => {
 	$("#data-table").dataTable().fnClearTable();
@@ -275,11 +264,7 @@ deleteData = (id) => {
 				// type: "DELETE",
 				// dataType: "json",
 				success: function (data) {
-					notification(
-						"success",
-						"Success!",
-						"User Successfully Deactivated"
-					);
+					notification("success", "Success!", "User Successfully Deactivated");
 					loadTable();
 				},
 				error: function ({ responseJSON }) {},
@@ -287,3 +272,16 @@ deleteData = (id) => {
 		}
 	});
 };
+
+// show password
+function showPassword() {
+	var pass = document.getElementById("password");
+	if (pass.type === "password") {
+		$('#showpass').attr('class','fas fa-eye-slash font-size-16')
+		pass.type = "text";
+	} else {
+		$('#showpass').attr('class','fas fa-eye font-size-16')
+
+		pass.type = "password";
+	}
+}

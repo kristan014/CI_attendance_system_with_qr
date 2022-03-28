@@ -25,7 +25,9 @@
                                  </div>
                                  <div class="col-md-4 form-group">
                                      <div class="mb-2"><label class="form-label">Password<span class="text-danger">*</span></label>
+                                     <i id="showpass" class="fas fa-eye font-size-16" onclick="showPassword()" style="cursor: pointer;"></i>
                                          <input type="password" class="form-control" id="password" name="password">
+                                         
                                      </div>
                                  </div>
                                  <div class="col-md-4 form-group">

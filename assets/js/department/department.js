@@ -47,8 +47,6 @@ $(function () {
 				$(element).addClass("is-valid");
 			},
 			submitHandler: function () {
-				// var form_data = new FormData(document.getElementById("form_id"));
-
 				if ($("#uuid").val() == "") {
 					// add record
 					$.ajax({
@@ -60,28 +58,20 @@ $(function () {
 							department_head: $("#department_head").val(),
 						},
 						cache: false,
-						// data: form_data,
-						// contentType: "application/json",
-						// dataType: "json",
-						// contentType: false,
-						// processData: false,
-						// headers: {
-						// 	Accept: "application/json",
-						// 	Authorization: "Bearer " + localStorage.getItem("TOKEN"),
-						// },
 						success: function (data) {
-							console.log(data);
-							notification(
-								"success",
-								"Success!",
-								"Department Successfuly Created"
-							);
-							formReset("hide");
+							if (data.status_code != 404) {
+								notification("success", "Success!", data.message);
+							} else {
+								notification("error", "Error!", data.message);
+							}
 
+							formReset("hide");
 							loadTable();
 						},
-						error: function (responseJSON) {
+						error: function ({ responseJSON }) {
 							notification("error", "Error!", "Error in Creating Department");
+							// console.log(responseJSON);
+							// console.log(responseJSON.responseText)
 						},
 					});
 				} else {
@@ -97,11 +87,6 @@ $(function () {
 							department_contact_no: $("#department_contact_no").val(),
 							department_head: $("#department_head").val(),
 						},
-						// contentType: "application/json",
-						// data: form_data,
-						// dataType: "json",
-						// contentType: false,
-						// processData: false,
 						cache: false,
 						success: function (data) {
 							notification(
@@ -123,13 +108,6 @@ $(function () {
 });
 
 loadTable = () => {
-	// $.ajaxSetup({
-	//   headers: {
-	//     Accept: "application/json",
-	//     Authorization: "Bearer " + localStorage.getItem("TOKEN"),
-	//     ContentType: "application/x-www-form-urlencoded",
-	//   },
-	// });
 	$("#data-table").dataTable().fnClearTable();
 	$("#data-table").dataTable().fnDraw();
 	$("#data-table").dataTable().fnDestroy();

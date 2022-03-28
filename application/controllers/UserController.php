@@ -44,7 +44,7 @@ class UserController extends CI_Controller
 
 		$data = array(
 			'email' => $email,
-			'password' => $password,
+			'password' => password_hash($password, PASSWORD_BCRYPT),
 			'employee_id' => $employee_id,
 			'status' => 'Active',
 			'created_at' => date('Y-m-d H:i:s'),
@@ -54,9 +54,6 @@ class UserController extends CI_Controller
 		$this->UserModel->create_user($data);
 
 
-		// echo json_encode(array(
-		// 	"statusCode"=>200
-		// ));
 	}
 
 

@@ -27,13 +27,13 @@ class ShiftController extends CI_Controller
 	// Function to Get One
 	public function get_one_shift($id)
 	{
-		echo json_encode($this->DepartmentModel->get_one_shift($id));
+		echo json_encode($this->ShiftModel->get_one_shift($id));
 	}
 
 	// Function to Get All
 	public function get_all_shift()
 	{
-		echo json_encode($this->DepartmentModel->get_all_shift());
+		echo json_encode($this->ShiftModel->get_all_shift());
 	}
 
 	// Function to Create
@@ -52,12 +52,9 @@ class ShiftController extends CI_Controller
 
 		);
 
-		$this->DepartmentModel->create_shift($data);
+		$this->ShiftModel->create_shift($data);
 
 
-		// echo json_encode(array(
-		// 	"statusCode"=>200
-		// ));
 	}
 
 
@@ -76,7 +73,7 @@ class ShiftController extends CI_Controller
 
 		);
 
-		$this->DepartmentModel->update_shift($id,$data);
+		$this->ShiftModel->update_shift($id,$data);
 
 	}
 
@@ -89,6 +86,6 @@ class ShiftController extends CI_Controller
 			'updated_at' => date('Y-m-d H:i:s'),
 
 		);
-		$this->DepartmentModel->delete_shift($id,$data);
+		$this->ShiftModel->delete_shift($id,$data);
 	}
 }

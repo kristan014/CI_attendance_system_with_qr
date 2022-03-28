@@ -21,26 +21,38 @@ class DepartmentModel extends CI_Model
 
     public function create_department($data)
     {
-        if ($this->db->insert('department', $data)) {
-            return true;
+        $this->db->where('department_name', $data['department_name']);
+        $query = $this->db->get('department');
+
+        if ($query->num_rows() > 0) {
+            return array(
+                'message' => "Department is already exist",
+                'status_code' => 404
+            );
         } else {
-            echo $this->db->error();
+        
+            if($this->db->insert('department', $data)){
+                return array(
+                    'message' => "Department Successfully Created",
+                    'status_code' => 201
+                );
+            }else{
+                log_message('error', $this->db->_error_message());
+            }
         }
     }
 
 
 
-    public function update_department($id,$data)
+    public function update_department($id, $data)
     {
         $this->db->where('department_id', $id);
         $this->db->update('department', $data);
-   
     }
 
-    public function delete_department($id,$data)
+    public function delete_department($id, $data)
     {
         $this->db->where('department_id', $id);
         $this->db->update('department', $data);
-
     }
 }

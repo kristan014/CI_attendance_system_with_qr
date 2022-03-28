@@ -33,13 +33,13 @@ class AccessController extends CI_Controller
 			$password = $this->input->post('password');
 
 			if ($this->UserModel->login($email, $password)) {
-				$user_id =  $this->UserModel->login($email, $password);
-				$user_details =  $this->UserModel->for_session_details($user_id[0]->user_id);
+				$user =  $this->UserModel->login($email, $password);
+				$user_details =  $this->UserModel->for_session_details($user['user_id']);
 
 				$session_data = array(
 					'EMAIL'     =>     $email,
 					'TOKEN'     =>     $token,
-					'USERID' => $user_id[0]->user_id,
+					'USERID' => $user['user_id'],
 					'DEPARTMENT_NAME' =>$user_details[0]->department_name,
 					'JOB_TITLE' => $user_details[0]->job_title_name,
 					'FIRSTNAME' => $user_details[0]->first_name,

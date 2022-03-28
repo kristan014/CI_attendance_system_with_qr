@@ -49,12 +49,13 @@ class UserModel extends CI_Model{
     function login($email, $password)  
     {  
         $this->db->where('email', $email);  
-        $this->db->where('password', $password); 
-        $this->db->select('user_id'); 
+        $this->db->select('user_id, password'); 
         $query = $this->db->get('user');  
-         if($query->num_rows() > 0)  
+        $result = $query->row_array(); 
+
+         if(!empty($result) && password_verify($password, $result['password']))  
          {  
-              return $query->result();  
+              return $result;  
          }  
          else  
          {  

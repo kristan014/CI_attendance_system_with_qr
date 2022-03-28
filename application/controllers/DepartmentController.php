@@ -51,13 +51,9 @@ class DepartmentController extends CI_Controller
 			'created_at' => date('Y-m-d H:i:s'),
 
 		);
-
-		$this->DepartmentModel->create_department($data);
-
-
-		// echo json_encode(array(
-		// 	"statusCode"=>200
-		// ));
+		header('Content-Type: application/json');
+		echo json_encode($this->DepartmentModel->create_department($data));
+	
 	}
 
 
