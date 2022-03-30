@@ -19,7 +19,7 @@ class UserController extends CI_Controller
 	{
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar');
-		$this->load->view('pages/user');
+		$this->load->view('pages/admin/user');
 		$this->load->view('template/footer');
 	}
 

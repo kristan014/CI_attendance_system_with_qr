@@ -148,10 +148,13 @@ loadTable = () => {
 		// type: "GET",
 		columns: [
 			{
-				data: "employee_id",
-				name: "employee_id",
+				data: null,
+				name: null,
 				searchable: true,
 				width: "10%",
+				render: function (aData, type, row) {
+					return aData.first_name + " "+aData.last_name;
+				}
 			},
 
 			{
@@ -159,13 +162,6 @@ loadTable = () => {
 				name: "email",
 				searchable: true,
 				width: "30%",
-			},
-
-			{
-				data: "created_by",
-				name: "created_by",
-				searchable: true,
-				width: "10%",
 			},
 
 			{

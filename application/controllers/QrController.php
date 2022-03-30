@@ -6,15 +6,20 @@ class QrController extends CI_Controller
     {
         parent::__construct();
         !$this->session->userdata('TOKEN') && redirect(base_url());
+        
 
         $this->load->library('phpqrcode/Qrlib');
         $this->load->helper('url');
     }
 
 
-    public function qr_test_page()
+    public function attendance_scanner()
     {
-        $this->load->view('pages/qrcode');
+        $this->load->view('template/header');
+		$this->load->view('template/sidebar');
+        $this->load->view('pages/attendance_clerk/attendance_scanner');
+		$this->load->view('template/footer');
+
     }
 
 

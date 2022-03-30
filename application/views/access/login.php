@@ -37,7 +37,7 @@
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Payroll Management System</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Employee Attendance System</h1>
                                     </div>
                                     <form class="user" action="<?= base_url('form_validation') ?>" method="POST">
                                         <div class="form-group">

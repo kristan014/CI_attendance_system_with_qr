@@ -64,13 +64,15 @@ $route['job_title'] = 'JobTitleController/job_title_page';
 $route['employee'] = 'EmployeeController/employee_page';
 
 // SHIFT
-$route['shift'] = 'ShiftController/shift_page';
+// $route['shift'] = 'ShiftController/shift_page';
 
 
 // USER
 $route['user'] = 'UserController/user_page';
 
 
+// ATTENDANCE SCANNER
+$route['attendance_scanner'] = 'QrController/attendance_scanner';
 
 
 

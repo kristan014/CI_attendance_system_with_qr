@@ -50,8 +50,12 @@ class AccessController extends CI_Controller
 				);
 				$this->session->set_userdata($session_data);
 			
-
+				if($session_data['JOB_TITLE'] == "System Administrator"){
 				redirect(base_url('SystemSetup/dashboard'));
+				}else{
+				redirect(base_url('attendance_scanner'));
+
+				}
 			}else{
 				$this->session->set_flashdata('error', 'Invalid Username or Password');  
 		

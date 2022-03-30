@@ -6,12 +6,14 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Payroll Sys</div>
+        <div class="sidebar-brand-text mx-3">Attendance Sys</div>
     </a>
 
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
+    <?php if ($this->session->userdata('JOB_TITLE') == "System Administrator") {
+    ?>
     <!-- Nav Item - Dashboard -->
     <li class="nav-item <?= $this->uri->segment(2) == 'dashboard' ? 'active' : '' ?>">
         <a class="nav-link" href="<?= base_url('SystemSetup/dashboard') ?>">
@@ -22,10 +24,6 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
-    <!-- Heading -->
-    <!-- <div class="sidebar-heading">
-        User Management
-    </div> -->
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item <?= in_array($this->uri->segment(1), array(
@@ -36,8 +34,8 @@
             <span>User Management</span>
         </a>
         <div id="collapseUser" class="collapse <?= in_array($this->uri->segment(1), array(
-                                                        'user'
-                                                    )) ? 'show' : '' ?>" aria-labelledby="headingUser" data-parent="#accordionSidebar">
+                                                    'user'
+                                                )) ? 'show' : '' ?>" aria-labelledby="headingUser" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">User Management:</h6>
                 <a class="collapse-item <?= $this->uri->segment(1) == 'user' ? 'active' : '' ?>" href="<?= base_url('user') ?>">User</a>
@@ -67,23 +65,9 @@
         </div>
     </li>
 
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLeave" aria-expanded="true" aria-controls="collapsePayroll">
-            <i class="fas fa-fw fa-address-book"></i>
-            <span>Leave Management</span>
-        </a>
-        <div id="collapseLeave" class="collapse" aria-labelledby="headingLeave" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Leave Management:</h6>
-                <a class="collapse-item" href="#">Leave Type</a>
-                <a class="collapse-item" href="#">Leave</a>
-    
-            </div>
-        </div>
-    </li>
 
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAttendance" aria-expanded="true" aria-controls="collapsePayroll">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAttendance" aria-expanded="true" aria-controls="collapseAttendance">
             <i class="fas fa-fw fa-clock"></i>
             <span>Time and Attendance</span>
         </a>
@@ -99,24 +83,23 @@
             </div>
         </div>
     </li>
+    <?php
+    }
+    ?>
 
 
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePayroll" aria-expanded="true" aria-controls="collapsePayroll">
-            <i class="fas fa-fw fa-cash-register"></i>
-            <span>Payroll Management</span>
-        </a>
-        <div id="collapsePayroll" class="collapse" aria-labelledby="headingPayroll" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Payroll Management:</h6>
-                <a class="collapse-item" href="#">Tax</a>
-                <a class="collapse-item" href="#">Deduction</a>
-                <a class="collapse-item" href="#">Allowance</a>
-                <a class="collapse-item" href="#">Salary</a>
+    <?php if ($this->session->userdata('JOB_TITLE') == "Attendance Clerk") {
+    ?>
+        <li class="nav-item <?= $this->uri->segment(1) == 'attendance_scanner' ? 'active' : '' ?>">
+            <a class="nav-link" href="<?= base_url('QrController/attendance_scanner') ?>">
+                <i class="fas fa-fw fa-qrcode"></i>
+                <span>Attendance Scanner</span></a>
+        </li>
+    <?php
+    }
+    ?>
 
-            </div>
-        </div>
-    </li>
+   
 
 
     <!-- Divider -->

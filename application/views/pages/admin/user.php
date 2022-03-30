@@ -79,7 +79,6 @@
                              <tr>
                                  <th>Employee</th>
                                  <th>Email</th>
-                                 <th>created_by</th>
                                  <th>Status</th>
                                  <th>created_at</th>
                                  <th>Action</th>

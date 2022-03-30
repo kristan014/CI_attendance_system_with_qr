@@ -12,7 +12,7 @@ class SystemSetup extends CI_Controller {
 	{
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar');
-		$this->load->view('pages/dashboard');
+		$this->load->view('pages/admin/dashboard');
 		$this->load->view('template/footer');	
 		
 		// print_r($this->session->userdata('DEPARTMENT_NAME'));

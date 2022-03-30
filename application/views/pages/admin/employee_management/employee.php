@@ -148,7 +148,7 @@
                                  <th>Employee Name</th>
                                  <th>Job Title</th>
                                  <th>Gender</th>
-                                 <th>Age</th>
+                                 <th>Birthdate</th>
                                  <th>Status</th>
                                  <th>Action</th>
 

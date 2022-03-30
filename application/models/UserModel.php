@@ -4,7 +4,11 @@ class UserModel extends CI_Model{
     // Get All
     public function get_all_user()
     {
-        $query = $this->db->get('user');
+        $this->db->select('u.*, e.first_name,e.last_name')
+        ->from('user as u')
+        ->join('employee as e', 'e.employee_id = u.employee_id')
+        ->where('u.status', 'Active');
+        $query = $this->db->get();
 
         return $query->result();
     }

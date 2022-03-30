@@ -4,7 +4,11 @@ class EmployeeModel extends CI_Model
     // Get All
     public function get_all_employee()
     {
-        $query = $this->db->get('employee');
+        $this->db->select('e.*, jb.job_title_name')
+        ->from('employee as e')
+        ->join('job_title as jb', 'e.job_title_id = jb.job_title_id')
+        ->where('e.status', 'Active');
+        $query = $this->db->get();
 
         return $query->result();
     }

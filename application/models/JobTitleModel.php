@@ -4,7 +4,7 @@ class JobTitleModel extends CI_Model
     // Get All
     public function get_all_job_title()
     {
-        $query =  $this->db->select('d.department_name, jb.*')
+        $this->db->select('d.department_name, jb.*')
         ->from('job_title as jb')
         ->join('department as d', 'd.department_id = jb.department_id')
         ->where('jb.status', 'Active');

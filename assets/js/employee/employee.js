@@ -215,8 +215,8 @@ loadTable = () => {
 			},
 
 			{
-				data: "job_title_id",
-				name: "job_title_id",
+				data: "job_title_name",
+				name: "job_title_name",
 				searchable: true,
 				width: "30%",
 			},
@@ -290,7 +290,7 @@ editData = (id, type) => {
 		dataType: "json",
 		success: function (data) {
 			formReset("show");
-
+			console.log(data)
 			$("#uuid").val(data[0].employee_id);
 			$("#photo_path_placeholder").attr(
 				"src",
@@ -308,7 +308,7 @@ editData = (id, type) => {
 			$("#date_hired").val(data[0].date_hired);
 			$("#address").val(data[0].address);
 
-			$("#job_title_id").val(data[0].department_id).trigger("change");
+			$("#job_title_id").val(data[0].job_title_id).trigger("change");
 
 			// if data is for viewing only
 			if (type == 0) {
