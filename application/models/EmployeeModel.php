@@ -48,4 +48,16 @@ class EmployeeModel extends CI_Model
         $this->db->update('employee', $data);
 
     }
+
+    // Generate random employee number
+    public function generate_emp_no()
+    {
+
+        $this->db->select('FLOOR(RAND() * 99999) AS random_num')
+        ->from('employee')
+        ->where_not_in('employee_no','random_num');
+        $query = $this->db->get();
+        return $query->row_array();
+
+    }
 }

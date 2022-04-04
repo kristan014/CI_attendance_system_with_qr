@@ -66,7 +66,8 @@ class UserController extends CI_Controller
 
 		$data = array(
 			'email' => $email,
-			'password' => $password,
+			// 'password' => $password,
+			'password' => password_hash($password, PASSWORD_BCRYPT),
 			'employee_id' => $employee_id,
 			'updated_at' => date('Y-m-d H:i:s'),
 

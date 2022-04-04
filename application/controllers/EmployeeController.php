@@ -46,8 +46,10 @@ class EmployeeController extends CI_Controller
 		$config['max_height']           = 6000; // 6000px
 
 
-
+        $this->load->library('phpqrcode/Qrlib');
 		$this->load->library('upload', $config);
+        $this->load->helper('url');
+
 		if (!$this->upload->do_upload('photo')) {
 			echo $this->upload->display_errors();
 		} else {
@@ -55,6 +57,7 @@ class EmployeeController extends CI_Controller
 			$photo_path = $photo_info['raw_name'] . $photo_info['file_ext'];
 		}
 
+		$employee_no = $this->EmployeeModel->generate_emp_no();
 		$first_name = $this->input->post('first_name');
 		$middle_name = $this->input->post('middle_name');
 		$last_name = $this->input->post('last_name');
@@ -69,6 +72,7 @@ class EmployeeController extends CI_Controller
 		$address = $this->input->post('address');
 		$data = array(
 			'photo' => $photo_path,
+			'employee_no' => 'employee_'.$employee_no['random_num'],
 			'first_name' => $first_name,
 			'middle_name' => $middle_name,
 			'last_name' => $last_name,
@@ -81,11 +85,27 @@ class EmployeeController extends CI_Controller
 			'date_hired' => $date_hired,
 			'job_title_id' => $job_title_id,
 			'address' => $address,
-
 			'status' => 'Active',
 			'created_at' => date('Y-m-d H:i:s'),
 
 		);
+
+		// Generate QR Code
+		$SERVERFILEPATH = './assets/uploads/';
+		$text = $data['employee_no'];
+		$text1 = substr($text, 0, 9);
+		$folder = $SERVERFILEPATH;
+		$file_name1 = $text1 . "-Qrcode" . rand(2, 200) . ".png";
+		$file_name = $folder . $file_name1;
+		QRcode::png($text, $file_name);
+		echo "<center><img src=" . base_url('assets/uploads/') . $file_name1 . "></center";
+		// $SERVERFILEPATH = './assets/uploads/';
+		// $qr_text = "wewew";
+		// $qr_text1 = substr($qr_text, 0, 9);
+		// $uploads_folder = $SERVERFILEPATH;
+		// $qr_file_name1 = $qr_text1 . "-Qrcode" . rand(2, 200) . ".png";
+		// $qr_file_name = $uploads_folder . $qr_file_name1;
+		// QRcode::png($qr_text, $qr_file_name);
 
 		$this->EmployeeModel->create_employee($data);
 
@@ -123,9 +143,7 @@ class EmployeeController extends CI_Controller
 		$job_title_id = $this->input->post('job_title_id');
 		$address = $this->input->post('address');
 
-		if ($photo_path != "") {
-			$data['photo'] = $photo_path;
-		}
+	
 
 		$data = array(
 			'first_name' => $first_name,
@@ -146,6 +164,10 @@ class EmployeeController extends CI_Controller
 
 		);
 
+			if ($photo_path != "") {
+			$data['photo'] = $photo_path;
+			}
+
 
 		$this->EmployeeModel->update_employee($id, $data);
 	}
@@ -162,3 +184,5 @@ class EmployeeController extends CI_Controller
 		$this->EmployeeModel->delete_employee($id, $data);
 	}
 }
+
+

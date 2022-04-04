@@ -34,7 +34,7 @@ class QrController extends CI_Controller
             $folder = $SERVERFILEPATH;
             $file_name1 = $text1 . "-Qrcode" . rand(2, 200) . ".png";
             $file_name = $folder . $file_name1;
-            QRcode::png($text, $file_name);
+            QRcode::png($text, base_url('assets/uploads/'));
             echo "<center><img src=" . base_url('assets/uploads/') . $file_name1 . "></center";
         } else {
             echo "No Text Entered";

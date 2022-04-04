@@ -58,7 +58,7 @@
                      </div>
                      <div class="col-md-6 text-right">
                          <button type="button" class="btn btn-sm btn-primary" id="btn_add" onClick="formReset('show')">
-                             <i class="fas fa-plus font-size-16 mr-1"></i> Add Job Yitle
+                             <i class="fas fa-plus font-size-16 mr-1"></i> Add Job Title
                          </button>
 
                      </div>
