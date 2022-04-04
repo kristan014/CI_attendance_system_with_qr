@@ -63,11 +63,12 @@ $(function () {
 
 						success: function (data) {
 							console.log(data);
-							notification(
-								"success",
-								"Success!",
-								"Job Title Successfuly Created"
-							);
+							if (data.status_code != 404) {
+								notification("success", "Success!", data.message);
+							} else {
+								notification("error", "Error!", data.message);
+							}
+							
 							formReset("hide");
 
 							loadTable();
@@ -92,11 +93,12 @@ $(function () {
 	
 						cache: false,
 						success: function (data) {
-							notification(
-								"success",
-								"Success!",
-								"Job Title Successfuly Updated"
-							);
+							if (data.status_code != 404) {
+								notification("success", "Success!", data.message);
+							} else {
+								notification("error", "Error!", data.message);
+							}
+
 							formReset("hide");
 
 							loadTable();

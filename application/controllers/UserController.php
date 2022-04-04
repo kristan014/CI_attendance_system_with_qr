@@ -51,9 +51,9 @@ class UserController extends CI_Controller
 
 		);
 
-		$this->UserModel->create_user($data);
 
-
+		header('Content-Type: application/json');
+		echo json_encode($this->UserModel->create_user($data));
 	}
 
 
@@ -73,7 +73,8 @@ class UserController extends CI_Controller
 
 		);
 
-		$this->UserModel->update_user($id, $data);
+		header('Content-Type: application/json');
+		echo json_encode($this->UserModel->update_user($id, $data));
 	}
 
 

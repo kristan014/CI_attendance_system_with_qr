@@ -51,13 +51,9 @@ class JobTitleController extends CI_Controller
 			'created_at' => date('Y-m-d H:i:s'),
 
 		);
-
-		$this->JobTitleModel->create_job_title($data);
-
-
-		// echo json_encode(array(
-		// 	"statusCode"=>200
-		// ));
+		
+		header('Content-Type: application/json');
+		echo json_encode($this->JobTitleModel->create_job_title($data));
 	}
 
 
@@ -76,7 +72,8 @@ class JobTitleController extends CI_Controller
 
 		);
 
-		$this->JobTitleModel->update_job_title($id,$data);
+		header('Content-Type: application/json');
+		echo json_encode($this->JobTitleModel->update_job_title($id, $data));
 
 	}
 

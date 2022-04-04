@@ -89,11 +89,13 @@ $(function () {
 						},
 						cache: false,
 						success: function (data) {
-							notification(
-								"success",
-								"Success!",
-								"Department Successfuly Updated"
-							);
+							console.log(data)
+							if (data.status_code != 404) {
+								notification("success", "Success!", data.message);
+							} else {
+								notification("error", "Error!", data.message);
+							}
+
 							formReset("hide");
 
 							loadTable();

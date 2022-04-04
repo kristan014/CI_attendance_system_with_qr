@@ -63,7 +63,12 @@ $(function () {
 
 						success: function (data) {
 							console.log(data);
-							notification("success", "Success!", "User Successfuly Created");
+							if (data.status_code != 404) {
+								notification("success", "Success!", data.message);
+							} else {
+								notification("error", "Error!", data.message);
+							}
+
 							formReset("hide");
 
 							loadTable();
@@ -85,7 +90,11 @@ $(function () {
 
 						cache: false,
 						success: function (data) {
-							notification("success", "Success!", "User Successfuly Updated");
+							if (data.status_code != 404) {
+								notification("success", "Success!", data.message);
+							} else {
+								notification("error", "Error!", data.message);
+							}
 							formReset("hide");
 
 							loadTable();
@@ -153,8 +162,8 @@ loadTable = () => {
 				searchable: true,
 				width: "10%",
 				render: function (aData, type, row) {
-					return aData.first_name + " "+aData.last_name;
-				}
+					return aData.first_name + " " + aData.last_name;
+				},
 			},
 
 			{
@@ -273,10 +282,10 @@ deleteData = (id) => {
 function showPassword() {
 	var pass = document.getElementById("password");
 	if (pass.type === "password") {
-		$('#showpass').attr('class','fas fa-eye-slash font-size-16')
+		$("#showpass").attr("class", "fas fa-eye-slash font-size-16");
 		pass.type = "text";
 	} else {
-		$('#showpass').attr('class','fas fa-eye font-size-16')
+		$("#showpass").attr("class", "fas fa-eye font-size-16");
 
 		pass.type = "password";
 	}

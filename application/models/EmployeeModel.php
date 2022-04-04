@@ -13,7 +13,7 @@ class EmployeeModel extends CI_Model
         return $query->result();
     }
 
-    // Get One
+    // Get One by id
     public function get_one_employee($id)
     {
         $this->db->where('employee_id', $id);
@@ -22,13 +22,40 @@ class EmployeeModel extends CI_Model
         return $query->result();
     }
 
+    // Get One employee by employee number
+    public function get_one_employee_by_emp_no($emp_no)
+    {
+        $this->db->where('employee_no', $emp_no);
+        $query = $this->db->get('employee');
+
+        return $query->result();
+    }
+
     // Create
     public function create_employee($data)
     {
-        if ($this->db->insert('employee', $data)) {
-            return true;
+ 
+
+        $this->db->where('first_name', $data['first_name'])
+        ->where('last_name', $data['last_name'])
+        ->where('middle_name', $data['middle_name']);
+        $query = $this->db->get('employee');
+
+        if ($query->num_rows() > 0) {
+            return array(
+                'message' => "Employee is already exist",
+                'status_code' => 404
+            );
         } else {
-            echo $this->db->error();
+
+            if ($this->db->insert('employee', $data)) {
+                return array(
+                    'message' => "Employee Successfully Created",
+                    'status_code' => 201
+                );
+            } else {
+                log_message('error', $this->db->_error_message());
+            }
         }
     }
 
@@ -36,8 +63,51 @@ class EmployeeModel extends CI_Model
     // Update
     public function update_employee($id,$data)
     {
-        $this->db->where('employee_id', $id);
-        $this->db->update('employee', $data);
+        $query_name = $this->db->where('first_name', $data['first_name'])
+        ->where('last_name', $data['last_name'])
+        ->where('middle_name', $data['middle_name'])
+        ->where('employee_id !=', $id)
+        ->get('employee');
+
+
+        $query_email = $this->db->where('email', $data['email'])
+        ->where('employee_id !=', $id)
+        ->get('employee');
+
+        $query_cellphone_no = $this->db->where('cellphone_no', $data['cellphone_no'])
+        ->where('employee_id !=', $id)
+        ->get('employee');
+
+
+        if ($query_name->num_rows() > 0) {
+            return array(
+                'message' => "Employee is already exist",
+                'status_code' => 404
+            );
+        }
+        if($query_email->num_rows() > 0){
+            return array(
+                'message' => "Email is already exist",
+                'status_code' => 404
+            );
+        }
+        if($query_cellphone_no->num_rows() > 0){
+            return array(
+                'message' => "Cellphone number is already exist",
+                'status_code' => 404
+            );
+        } else {
+            $this->db->where('employee_id', $id);
+
+            if ($this->db->update('employee', $data)) {
+                return array(
+                    'message' => "Employee Successfully Updated",
+                    'status_code' => 201
+                );
+            } else {
+                log_message('error', $this->db->_error_message());
+            }
+        }
    
     }
 

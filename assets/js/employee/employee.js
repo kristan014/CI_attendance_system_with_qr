@@ -112,11 +112,11 @@ $(function () {
 
 							success: function (data) {
 								console.log(data);
-								notification(
-									"success",
-									"Success!",
-									"Employee Successfuly Created"
-								);
+								if (data.status_code != 404) {
+									notification("success", "Success!", data.message);
+								} else {
+									notification("error", "Error!", data.message);
+								}
 								formReset("hide");
 
 								loadTable();
@@ -140,11 +140,13 @@ $(function () {
 						processData: false,
 						cache: false,
 						success: function (data) {
-							notification(
-								"success",
-								"Success!",
-								"Employee Successfuly Updated"
-							);
+							console.log(data)
+							if (data.status_code != 404) {
+								notification("success", "Success!", data.message);
+							} else {
+								notification("error", "Error!", data.message);
+							}
+
 							formReset("hide");
 
 							loadTable();
@@ -290,7 +292,6 @@ editData = (id, type) => {
 		dataType: "json",
 		success: function (data) {
 			formReset("show");
-			console.log(data)
 			$("#uuid").val(data[0].employee_id);
 			$("#photo_path_placeholder").attr(
 				"src",

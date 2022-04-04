@@ -72,7 +72,8 @@ class DepartmentController extends CI_Controller
 
 		);
 
-		$this->DepartmentModel->update_department($id,$data);
+		header('Content-Type: application/json');
+		echo json_encode($this->DepartmentModel->update_department($id,$data));
 
 	}
 

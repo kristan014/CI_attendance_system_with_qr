@@ -30,9 +30,17 @@ class EmployeeController extends CI_Controller
 		echo json_encode($this->EmployeeModel->get_one_employee($id));
 	}
 
+    // Get One employee by employee number
+	public function get_one_employee_by_emp_no($emp_no)
+	{
+		echo json_encode($this->EmployeeModel->get_one_employee_by_emp_no($emp_no));
+	}
+
+
 	// Function to Get All
 	public function get_all_employee()
 	{
+	
 		echo json_encode($this->EmployeeModel->get_all_employee());
 	}
 
@@ -46,13 +54,12 @@ class EmployeeController extends CI_Controller
 		$config['max_height']           = 6000; // 6000px
 
 
-        $this->load->library('phpqrcode/Qrlib');
+		$this->load->library('phpqrcode/Qrlib');
 		$this->load->library('upload', $config);
-        $this->load->helper('url');
+		$this->load->helper('url');
 
-		if (!$this->upload->do_upload('photo')) {
-			echo $this->upload->display_errors();
-		} else {
+		$photo_path="";
+		if ($this->upload->do_upload('photo')) {
 			$photo_info = $this->upload->data();
 			$photo_path = $photo_info['raw_name'] . $photo_info['file_ext'];
 		}
@@ -72,7 +79,7 @@ class EmployeeController extends CI_Controller
 		$address = $this->input->post('address');
 		$data = array(
 			'photo' => $photo_path,
-			'employee_no' => 'employee_'.$employee_no['random_num'],
+			'employee_no' => 'employee_' . $employee_no['random_num'],
 			'first_name' => $first_name,
 			'middle_name' => $middle_name,
 			'last_name' => $last_name,
@@ -93,22 +100,14 @@ class EmployeeController extends CI_Controller
 		// Generate QR Code
 		$SERVERFILEPATH = './assets/uploads/';
 		$text = $data['employee_no'];
-		$text1 = substr($text, 0, 9);
 		$folder = $SERVERFILEPATH;
-		$file_name1 = $text1 . "-Qrcode" . rand(2, 200) . ".png";
+		$file_name1 = $text . "-Qrcode" . rand(2, 200) . ".png";
 		$file_name = $folder . $file_name1;
 		QRcode::png($text, $file_name);
 		echo "<center><img src=" . base_url('assets/uploads/') . $file_name1 . "></center";
-		// $SERVERFILEPATH = './assets/uploads/';
-		// $qr_text = "wewew";
-		// $qr_text1 = substr($qr_text, 0, 9);
-		// $uploads_folder = $SERVERFILEPATH;
-		// $qr_file_name1 = $qr_text1 . "-Qrcode" . rand(2, 200) . ".png";
-		// $qr_file_name = $uploads_folder . $qr_file_name1;
-		// QRcode::png($qr_text, $qr_file_name);
 
-		$this->EmployeeModel->create_employee($data);
-
+		header('Content-Type: application/json');
+		echo json_encode($this->EmployeeModel->create_employee($data));
 	}
 
 
@@ -121,11 +120,10 @@ class EmployeeController extends CI_Controller
 		$config['max_width']            = 6000; // 6000px you can set the value you want
 		$config['max_height']           = 6000; // 6000px
 
-
+		$photo_path="";
 		$this->load->library('upload', $config);
-		if (!$this->upload->do_upload('photo')) {
-			echo $this->upload->display_errors();
-		} else {
+		if ($this->upload->do_upload('photo')) {
+
 			$photo_info = $this->upload->data();
 			$photo_path = $photo_info['raw_name'] . $photo_info['file_ext'];
 		}
@@ -143,7 +141,7 @@ class EmployeeController extends CI_Controller
 		$job_title_id = $this->input->post('job_title_id');
 		$address = $this->input->post('address');
 
-	
+
 
 		$data = array(
 			'first_name' => $first_name,
@@ -164,12 +162,12 @@ class EmployeeController extends CI_Controller
 
 		);
 
-			if ($photo_path != "") {
+		if ($photo_path != "") {
 			$data['photo'] = $photo_path;
-			}
+		}
 
-
-		$this->EmployeeModel->update_employee($id, $data);
+		header('Content-Type: application/json');
+		echo json_encode($this->EmployeeModel->update_employee($id, $data));
 	}
 
 
@@ -184,5 +182,3 @@ class EmployeeController extends CI_Controller
 		$this->EmployeeModel->delete_employee($id, $data);
 	}
 }
-
-

@@ -1,75 +1,52 @@
-
-<h1>How to generate QR Code using Codeigniter</h1>
-<form action="<?php echo base_url();?>QrController/qrcodeGenerator" method="post">
-<input type="text" name="qrcode_text">
-<button>Submit</button>
-</form>
 <script src="<?= base_url('assets') ?>/vendor/qrcode/html5-qrcode.min.js"></script>
 
 <div class="container">
-<div class="row">
-  <div class="col-lg-5">
-    <div  id="reader"></div>
-  </div>
-  <div class="col-7">
-    <h4>SCAN RESULT</h4>
-    <div id="result">Result Here</div>
+  <div class="row">
+    <div class="col-lg-5">
+      <div id="reader" class="w-100"></div>
+    </div>
+    <div class="col-7">
+      <h4>SCAN RESULT</h4>
+      <div id="result">Result Here</div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="mb-3">
+            <img src="https://avatars.dicebear.com/api/bottts/smile.svg" alt="" class="rounded avatar-lg img-thumbnail" style="height:150px; width:150px;" id="photo_path_placeholder" name="photo_path_placeholder">
+          </div>
+        </div>
+        <div class="col-md-6">
+        <label class="form-label"><strong>Employee no</strong></label>
+        <input type="text" class="form-control" id="employee_no" name="employee_no" readonly>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-md-3 form-group">
+          <div class="mb-2"><label class="form-label">First Name<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="first_name" name="first_name" readonly>
+          </div>
+        </div>
+        <div class="col-md-3 form-group">
+          <div class="mb-2"><label class="form-label">Middle Name</label>
+            <input type="text" class="form-control" id="middle_name" name="middle_name" readonly>
+          </div>
+        </div>
+        <div class="col-md-3 form-group">
+          <div class="mb-2"><label class="form-label">Last Name<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="last_name" name="last_name" readonly>
+          </div>
+        </div>
+
+        <div class="col-md-3 form-group">
+          <div class="mb-2"><label class="form-label">Extension Name</label>
+            <input type="text" class="form-control" id="extension_name" name="extension_name" readonly>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-</div>
 
-<script type="text/javascript">
-function onScanSuccess(qrCodeMessage) {
-    document.getElementById('result').innerHTML = '<span class="result">'+qrCodeMessage+'</span>';
-
-  //   $.ajax({
-	// 					url: baseURL + "UserController/create_user",
-	// 					type: "POST",
-	// 					data: {
-	// 						email: $("#email").val(),
-	// 						password: $("#password").val(),
-	// 						employee_id: $("#employee_id").val(),
-	// 					},
-	// 					cache: false,
-
-	// 					success: function (data) {
-	// 					$.ajax({
-  //         url: baseURL + "EmployeeController/get_all_employee",
-  //         type: "GET",
-  //         dataType: "json",
-  //         success: function (responseData) {
-  //           if (responseData) {
-	// 			$("#employee_id").empty();
-	// 			$.each(responseData, function (i, dataOptions) {
-	// 				var options = "";
-
-	// 				options =
-	// 					"<option value='" +
-	// 					dataOptions.employee_id +
-	// 					"'>" +
-	// 					dataOptions.first_name +
-	// 					" " +
-	// 					dataOptions.last_name;
-	// 				("</option>");
-
-	// 				$("#employee_id").append(options);
-	// 			});
-	// 		} else {
-	// 			notification("error", "Error!", "Error in loading employees");
-	// 		}
-	// 	},
-	// 	error: function ({ responseJSON }) {},
-	// });
-	// 					},
-	// 					error: function (responseJSON) {
-	// 						notification("error", "Error!", "Error in Creating User");
-	// 					},
-	// 				});
-}
-function onScanError(errorMessage) {
-  //handle scan error
-}
-var html5QrcodeScanner = new Html5QrcodeScanner(
-    "reader", { fps: 20, qrbox: 250 });
-html5QrcodeScanner.render(onScanSuccess, onScanError);
-</script>  
+<script src="<?= base_url('assets') ?>/js/attendance_scanner/attendance_scanner.js"></script>
