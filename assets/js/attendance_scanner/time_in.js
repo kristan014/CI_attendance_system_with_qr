@@ -12,40 +12,47 @@ $(function () {
 			dataType: "json",
 			success: function (responseData) {
 				if (responseData) {
-					console.log(responseData);
+					// console.log(responseData);
 					$("#photo_path_placeholder").attr(
 						"src",
 						"assets/uploads/" + responseData[0].photo
 					);
+					$("#employee_id").val(responseData[0].employee_id);
+
 					$("#employee_no").val(responseData[0].employee_no);
 					$("#first_name").val(responseData[0].first_name);
 					$("#last_name").val(responseData[0].last_name);
 					if (responseData[0].middle_name != "") {
-                    $("#middle_name").val(responseData[0].middle_name);
-                    }
-					if (responseData[0].extension_name != "") {
-                        $("#extension_name").val(responseData[0].extension_name);
+						$("#middle_name").val(responseData[0].middle_name);
 					}
-                    
-                    $("#middle_name").val("none");
+					if (responseData[0].extension_name != "") {
+						$("#extension_name").val(responseData[0].extension_name);
+					}
+
+					$("#middle_name").val("none");
 					$("#extension_name").val("none");
 
 					// record time in
-					// $.ajax({
-					// 	url: baseURL + "TimeInController/create_time_in",
-					// 	type: "POST",
-					// 	data: {
-					// 		email: $("#email").val(),
-					// 		password: $("#password").val(),
-					// 		employee_id: $("#employee_id").val(),
-					// 	},
-					// 	cache: false,
+					$.ajax({
+						url: baseURL + "TimeInController/create_time_in",
+						type: "POST",
+						data: {
+							employee_id: $("#employee_id").val(),
+						},
+						cache: false,
 
-					// 	success: function (data) {},
-					// 	error: function (responseJSON) {
-					// 		notification("error", "Error!", "Error in logging time in");
-					// 	},
-					// });
+						success: function (data) {
+							console.log(data)
+							if (data.status_code == 422) {
+								notification("warning", "Warning!", data.message);
+							} else {
+								notification("success", "Success!", data.message);
+							}
+						},
+						error: function (responseJSON) {
+							notification("error", "Error!", "Error in logging time in");
+						},
+					});
 				} else {
 					notification("error", "Error!", "Error in loading employee");
 				}
@@ -53,15 +60,19 @@ $(function () {
 			error: function ({ responseJSON }) {},
 		});
 	}
+
+	
 	function onScanError(errorMessage) {
 		//handle scan error
 	}
 	var html5QrcodeScanner = new Html5QrcodeScanner("reader", {
-		fps: 20,
+		fps: 5,
 		qrbox: 250,
 	});
 
-	html5QrcodeScanner.render(onScanSuccess, onScanError);
+	html5QrcodeScanner.render(
+		onScanSuccess, onScanError
+		);
 
 	readURL = (input) => {
 		var url = input.value;

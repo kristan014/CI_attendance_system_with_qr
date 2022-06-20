@@ -1,6 +1,7 @@
 <script src="<?= base_url('assets') ?>/vendor/qrcode/html5-qrcode.min.js"></script>
 
 <div class="container">
+  
   <div class="row">
     <div class="col-lg-5">
       <div id="reader" class="w-100"></div>
@@ -15,6 +16,8 @@
             <img src="https://avatars.dicebear.com/api/bottts/smile.svg" alt="" class="rounded avatar-lg img-thumbnail" style="height:150px; width:150px;" id="photo_path_placeholder" name="photo_path_placeholder">
           </div>
         </div>
+        <input type="text" class="form-control" id="employee_id" name="employee_id" readonly>
+
         <div class="col-md-6">
         <label class="form-label"><strong>Employee no</strong></label>
         <input type="text" class="form-control" id="employee_no" name="employee_no" readonly>
@@ -49,4 +52,4 @@
   </div>
 </div>
 
-<script src="<?= base_url('assets') ?>/js/attendance_scanner/attendance_scanner.js"></script>
+<script src="<?= base_url('assets') ?>/js/attendance_scanner/time_in.js"></script>

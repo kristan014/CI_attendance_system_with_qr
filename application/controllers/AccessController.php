@@ -53,7 +53,7 @@ class AccessController extends CI_Controller
 				if($session_data['JOB_TITLE'] == "System Administrator"){
 				redirect(base_url('SystemSetup/dashboard'));
 				}else{
-				redirect(base_url('attendance_scanner'));
+				redirect(base_url('time_in'));
 
 				}
 			}else{

@@ -13,14 +13,6 @@ class QrController extends CI_Controller
     }
 
 
-    public function attendance_scanner()
-    {
-        $this->load->view('template/header');
-		$this->load->view('template/sidebar');
-        $this->load->view('pages/attendance_clerk/attendance_scanner');
-		$this->load->view('template/footer');
-
-    }
 
 
     public function qrcodeGenerator()

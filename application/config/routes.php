@@ -50,6 +50,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 
+// FOR PAGES
+
 // LOGIN
 $route['default_controller'] = 'AccessController/login';
 $route['form_validation'] = 'AccessController/form_validation';
@@ -72,7 +74,13 @@ $route['user'] = 'UserController/user_page';
 
 
 // ATTENDANCE SCANNER
-$route['attendance_scanner'] = 'QrController/attendance_scanner';
+$route['time_in'] = 'TimeInController/time_in_page';
+$route['time_out'] = 'TimeOutController/time_out_page';
+
+
+// ATTENDANCE LIST
+$route['attendance_sheet'] = 'AttendanceController/attendance_sheet_page';
+
 
 
 

@@ -71,13 +71,12 @@
             <i class="fas fa-fw fa-clock"></i>
             <span>Time and Attendance</span>
         </a>
-        <div id="collapseAttendance" class="collapse" aria-labelledby="headingAttendance" data-parent="#accordionSidebar">
+        <div id="collapseAttendance" class="collapse <?= in_array($this->uri->segment(1), array(
+                                                    'attendance_sheet'
+                                                )) ? 'show' : '' ?>"" aria-labelledby="headingAttendance" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Time and Attendance:</h6>
-
-                <a class="collapse-item" href="#">Time in</a>
-                <a class="collapse-item" href="#">Time Out</a>
-                <a class="collapse-item" href="#">Attendance</a>
+                <a class="collapse-item <?= $this->uri->segment(1) == 'attendance_sheet' ? 'active' : '' ?>" href="<?= base_url('attendance_sheet') ?>">Attendance</a>
 
 
             </div>
@@ -90,10 +89,16 @@
 
     <?php if ($this->session->userdata('JOB_TITLE') == "Attendance Clerk") {
     ?>
-        <li class="nav-item <?= $this->uri->segment(1) == 'attendance_scanner' ? 'active' : '' ?>">
-            <a class="nav-link" href="<?= base_url('QrController/attendance_scanner') ?>">
-                <i class="fas fa-fw fa-qrcode"></i>
-                <span>Attendance Scanner</span></a>
+        <li class="nav-item <?= $this->uri->segment(1) == 'time_in' ? 'active' : '' ?>">
+            <a class="nav-link" href="<?= base_url('time_in') ?>">
+            <i class="fas fa-fw fa-sign-in-alt"></i>
+                <span>Time In</span></a>
+        </li>
+
+        <li class="nav-item <?= $this->uri->segment(1) == 'time_out' ? 'active' : '' ?>">
+            <a class="nav-link" href="<?= base_url('time_out') ?>">
+                <i class="fas fa-fw fa-sign-out-alt"></i>
+                <span>Time Out</span></a>
         </li>
     <?php
     }

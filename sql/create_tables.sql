@@ -61,25 +61,28 @@
 -- FOREIGN KEY (updated_by) REFERENCES user(user_id) 
 -- );
 
-CREATE TABLE time_in (
-time_in_id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-time_log DATETIME DEFAULT CURRENT_TIMESTAMP,
-employee_id INT(11) UNSIGNED,
-FOREIGN KEY (employee_id) REFERENCES employee(employee_id)
-);
+-- --------------------- REMOVE ------------------------------
+-- CREATE TABLE time_in (
+-- time_in_id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+-- time_log DATETIME DEFAULT CURRENT_TIMESTAMP,
+-- employee_id INT(11) UNSIGNED,
+-- FOREIGN KEY (employee_id) REFERENCES employee(employee_id)
+-- );
 
-CREATE TABLE time_out (
-time_out_id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-time_log DATETIME DEFAULT CURRENT_TIMESTAMP,
-employee_id INT(11) UNSIGNED,
-FOREIGN KEY (employee_id) REFERENCES employee(employee_id)
-);
+-- CREATE TABLE time_out (
+-- time_out_id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+-- time_log DATETIME DEFAULT CURRENT_TIMESTAMP,
+-- employee_id INT(11) UNSIGNED,
+-- FOREIGN KEY (employee_id) REFERENCES employee(employee_id)
+-- );
+-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
 
 CREATE TABLE attendance (
-time_in_id INT(11) UNSIGNED,
-time_out_id INT(11) UNSIGNED,
-over_time_hours INT(11) UNSIGNED,
-total_hours_worked INT(11) UNSIGNED,
-FOREIGN KEY (time_in_id) REFERENCES time_in(time_in_id),
-FOREIGN KEY (time_out_id) REFERENCES time_out(time_out_id)
+attendance_id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+attendance_date DATE DEFAULT CURRENT_TIMESTAMP,
+time_in TIME,
+time_out TIME,
+over_time_hours INT(11),
+total_hours_worked INT(11),
 );
