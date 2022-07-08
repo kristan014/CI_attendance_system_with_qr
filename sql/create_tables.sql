@@ -85,4 +85,6 @@ time_in TIME,
 time_out TIME,
 over_time_hours INT(11),
 total_hours_worked INT(11),
+employee_id INT(11) UNSIGNED,
+FOREIGN KEY (employee_id) REFERENCES employee(employee_id)
 );

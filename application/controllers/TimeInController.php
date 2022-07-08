@@ -26,31 +26,31 @@ class TimeInController extends CI_Controller
 
 
 
-	// Function to Get One
-	public function get_one_time_in($id)
-	{
-		echo json_encode($this->TimeInModel->get_one_time_in($id));
-	}
+	// // Function to Get One
+	// public function get_one_time_in($id)
+	// {
+	// 	echo json_encode($this->TimeInModel->get_one_time_in($id));
+	// }
 
-	// Function to Get All
-	public function get_all_time_in()
-	{
-		echo json_encode($this->TimeInModel->get_all_time_in());
-	}
+	// // Function to Get All
+	// public function get_all_time_in()
+	// {
+	// 	echo json_encode($this->TimeInModel->get_all_time_in());
+	// }
 
-	// Function to Create
-	public function create_time_in()
-	{
+	// // Function to Create
+	// public function create_time_in()
+	// {
 
-		$employee_id = $this->input->post('employee_id');
+	// 	$employee_id = $this->input->post('employee_id');
 
-		$data = array(
-			'employee_id' => $employee_id,
-		);
+	// 	$data = array(
+	// 		'employee_id' => $employee_id,
+	// 	);
 		
-		header('Content-Type: application/json');
-		echo json_encode($this->TimeInModel->create_time_in($data));
-	}
+	// 	header('Content-Type: application/json');
+	// 	echo json_encode($this->TimeInModel->create_time_in($data));
+	// }
 
 
 

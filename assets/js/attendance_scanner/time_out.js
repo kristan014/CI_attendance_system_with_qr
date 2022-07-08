@@ -34,7 +34,7 @@ $(function () {
 
 					// record time in
 					$.ajax({
-						url: baseURL + "TimeOutController/create_time_out",
+						url: baseURL + "AttendanceController/create_time_out",
 						type: "POST",
 						data: {
 							employee_id: $("#employee_id").val(),

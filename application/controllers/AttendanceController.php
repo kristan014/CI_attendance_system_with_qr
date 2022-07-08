@@ -24,10 +24,11 @@ class AttendanceController extends CI_Controller
 		$this->load->view('template/footer');
 	}
 
+	
 	// Function to Get One
-	public function get_one_attendance($time_in_id,$time_out_id)
+	public function get_one_attendance($id)
 	{
-		echo json_encode($this->AttendanceModel->get_one_attendance($time_in_id,$time_out_id));
+		echo json_encode($this->AttendanceModel->get_one_attendance($id));
 	}
 
 	// Function to Get All
@@ -37,36 +38,40 @@ class AttendanceController extends CI_Controller
 	}
 
 	// Function to Create
-	public function create_attendance()
+	public function create_time_in()
 	{
-		$attendance_name = $this->input->post('attendance_name');
-		$attendance_contact_no = $this->input->post('attendance_contact_no');
-		$attendance_head = $this->input->post('attendance_head');
+
+		$employee_id = $this->input->post('employee_id');
+		$time_in = date('h:i');
+
 
 		$data = array(
-			'attendance_name' => $attendance_name,
-			'attendance_contact_no' => $attendance_contact_no,
-			'attendance_head' => $attendance_head,
-			'status' => 'Active',
-			'created_at' => date('Y-m-d H:i:s'),
+			'employee_id' => $employee_id,
+			'time_in' => $time_in,
 
 		);
+		
 		header('Content-Type: application/json');
-		echo json_encode($this->AttendanceModel->create_attendance($data));
-	
+		echo json_encode($this->AttendanceModel->create_time_in($data));
 	}
 
-
-
-
-	// Function to Delete/Deactivate
-	public function delete_attendance($time_out_id,$time_in_id)
+    	// Function to Create
+	public function create_time_out()
 	{
-		$data = array(
-			'status' => 'Inactive',
-			'updated_at' => date('Y-m-d H:i:s'),
 
+		$employee_id = $this->input->post('employee_id');
+		$time_out = date('h:i');
+
+
+		$data = array(
+			'time_out' => $time_out,
+			'employee_id' => $employee_id,
 		);
-		$this->AttendanceModel->delete_attendance($time_out_id,$time_in_id);
+		
+		header('Content-Type: application/json');
+		echo json_encode($this->AttendanceModel->create_time_in($data));
 	}
+
+
+
 }

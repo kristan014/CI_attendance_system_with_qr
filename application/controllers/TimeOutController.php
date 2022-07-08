@@ -26,31 +26,31 @@ class TimeOutController extends CI_Controller
 
 
 
-	// Function to Get One
-	public function get_one_time_out($id)
-	{
-		echo json_encode($this->TimeOutModel->get_one_time_out($id));
-	}
+	// // Function to Get One
+	// public function get_one_time_out($id)
+	// {
+	// 	echo json_encode($this->TimeOutModel->get_one_time_out($id));
+	// }
 
-	// Function to Get All
-	public function get_all_time_out()
-	{
-		echo json_encode($this->TimeOutModel->get_all_time_out());
-	}
+	// // Function to Get All
+	// public function get_all_time_out()
+	// {
+	// 	echo json_encode($this->TimeOutModel->get_all_time_out());
+	// }
 
-	// Function to Create
-	public function create_time_out()
-	{
+	// // Function to Create
+	// public function create_time_out()
+	// {
 
-		$employee_id = $this->input->post('employee_id');
+	// 	$employee_id = $this->input->post('employee_id');
 
-		$data = array(
-			'employee_id' => $employee_id,
-		);
+	// 	$data = array(
+	// 		'employee_id' => $employee_id,
+	// 	);
 		
-		header('Content-Type: application/json');
-		echo json_encode($this->TimeOutModel->create_time_out($data));
-	}
+	// 	header('Content-Type: application/json');
+	// 	echo json_encode($this->TimeOutModel->create_time_out($data));
+	// }
 
 
 	

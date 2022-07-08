@@ -34,7 +34,7 @@ $(function () {
 
 					// record time in
 					$.ajax({
-						url: baseURL + "TimeInController/create_time_in",
+						url: baseURL + "AttendanceController/create_time_in",
 						type: "POST",
 						data: {
 							employee_id: $("#employee_id").val(),
